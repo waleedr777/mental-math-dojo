@@ -73,19 +73,16 @@ class SoundEngine {
 
   playClick() {
     if (this.muted) return;
-    this.safePlayWav(this.wavClick);
     this.synthClick();
   }
 
   playCorrect() {
     if (this.muted) return;
-    this.safePlayWav(this.wavCorrect);
-    this.synthChime([587.33, 880]); // D5, A5
+    this.synthChime([587.33, 880]); // Clean modern 2-tone chime (D5, A5)
   }
 
   playWrong() {
     if (this.muted) return;
-    this.safePlayWav(this.wavWrong);
     this.synthBuzz(160);
   }
 
