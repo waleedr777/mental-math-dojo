@@ -1,0 +1,156 @@
+/* Soromath Theme Engine */
+:root {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #21262d;
+  --card-bg: rgba(22, 27, 34, 0.85);
+  --card-border: #30363d;
+  --card-hover: #262c36;
+  --text-primary: #f0f6fc;
+  --text-secondary: #8b949e;
+  --text-muted: #6e7681;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --accent-glow: rgba(99, 102, 241, 0.35);
+  --accent-subtle: rgba(99, 102, 241, 0.15);
+  --success: #10b981;
+  --success-glow: rgba(16, 185, 129, 0.3);
+  --danger: #ef4444;
+  --danger-glow: rgba(239, 68, 68, 0.3);
+  --warning: #f59e0b;
+  --info: #38bdf8;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 14px rgba(0,0,0,0.4);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.5);
+  --glass-blur: blur(12px);
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 1. Matrix */
+[data-theme="matrix"] {
+  --bg-primary: #050a05;
+  --bg-secondary: #0c180c;
+  --bg-tertiary: #142814;
+  --card-bg: rgba(12, 24, 12, 0.88);
+  --card-border: #1e461e;
+  --card-hover: #163216;
+  --text-primary: #39ff14;
+  --text-secondary: #22c55e;
+  --text-muted: #15803d;
+  --accent: #00ff66;
+  --accent-hover: #10b981;
+  --accent-glow: rgba(0, 255, 102, 0.4);
+  --accent-subtle: rgba(0, 255, 102, 0.12);
+  --font-main: var(--font-mono);
+}
+
+/* 2. Sakura */
+[data-theme="sakura"] {
+  --bg-primary: #140d18;
+  --bg-secondary: #221429;
+  --bg-tertiary: #2e1c38;
+  --card-bg: rgba(34, 20, 41, 0.85);
+  --card-border: #4a285b;
+  --card-hover: #3b2049;
+  --text-primary: #fdf2f8;
+  --text-secondary: #f472b6;
+  --text-muted: #c084fc;
+  --accent: #ec4899;
+  --accent-hover: #db2777;
+  --accent-glow: rgba(236, 72, 153, 0.4);
+  --accent-subtle: rgba(236, 72, 153, 0.15);
+}
+
+/* 3. Ocean */
+[data-theme="ocean"] {
+  --bg-primary: #061124;
+  --bg-secondary: #0c1e3d;
+  --bg-tertiary: #142e5a;
+  --card-bg: rgba(12, 30, 61, 0.85);
+  --card-border: #1e4480;
+  --card-hover: #163568;
+  --text-primary: #f0f9ff;
+  --text-secondary: #7dd3fc;
+  --text-muted: #38bdf8;
+  --accent: #0284c7;
+  --accent-hover: #0369a1;
+  --accent-glow: rgba(56, 189, 248, 0.4);
+  --accent-subtle: rgba(56, 189, 248, 0.15);
+}
+
+/* 4. Cyberpunk */
+[data-theme="cyberpunk"] {
+  --bg-primary: #120e24;
+  --bg-secondary: #1e153b;
+  --bg-tertiary: #2b1f52;
+  --card-bg: rgba(30, 21, 59, 0.88);
+  --card-border: #581c87;
+  --card-hover: #3b2570;
+  --text-primary: #fef08a;
+  --text-secondary: #e9d5ff;
+  --text-muted: #c084fc;
+  --accent: #facc15;
+  --accent-hover: #eab308;
+  --accent-glow: rgba(250, 204, 21, 0.45);
+  --accent-subtle: rgba(250, 204, 21, 0.15);
+}
+
+/* 5. Solar Fire */
+[data-theme="fire"] {
+  --bg-primary: #190a05;
+  --bg-secondary: #2c1208;
+  --bg-tertiary: #3f1c0e;
+  --card-bg: rgba(44, 18, 8, 0.85);
+  --card-border: #632512;
+  --card-hover: #4e1f0e;
+  --text-primary: #fff7ed;
+  --text-secondary: #fb923c;
+  --text-muted: #fdba74;
+  --accent: #f97316;
+  --accent-hover: #ea580c;
+  --accent-glow: rgba(249, 115, 22, 0.45);
+  --accent-subtle: rgba(249, 115, 22, 0.15);
+}
+
+/* 6. Nordic Light */
+[data-theme="nordic"] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --card-border: #cbd5e1;
+  --card-hover: #f8fafc;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-glow: rgba(79, 70, 229, 0.25);
+  --accent-subtle: rgba(79, 70, 229, 0.1);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 14px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+/* 7. Midnight Amethyst */
+[data-theme="amethyst"] {
+  --bg-primary: #0d0b14;
+  --bg-secondary: #171324;
+  --bg-tertiary: #241d38;
+  --card-bg: rgba(23, 19, 36, 0.88);
+  --card-border: #3b2d5c;
+  --card-hover: #2f244c;
+  --text-primary: #faf5ff;
+  --text-secondary: #c084fc;
+  --text-muted: #a855f7;
+  --accent: #9333ea;
+  --accent-hover: #7e22ce;
+  --accent-glow: rgba(147, 51, 234, 0.4);
+  --accent-subtle: rgba(147, 51, 234, 0.15);
+}

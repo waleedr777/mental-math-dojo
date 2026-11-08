@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="obsidian">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soromath 2.0 - Mental Math & Trick Dojo</title>
+  <meta name="description" content="Master mental math shortcuts, flash anzan calculation, interactive soroban, and high-speed arithmetic drills.">
+  <link rel="icon" href="images/favicon.ico">
+
+  <!-- KaTeX for mathematical notation rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Chart.js for analytics & CPM graphs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/drills.css">
+  <link rel="stylesheet" href="css/tricks.css">
+  <link rel="stylesheet" href="css/anzan.css">
+  <link rel="stylesheet" href="css/stats.css">
+</head>
+<body>
+  <div class="bg-mesh"></div>
+
+  <div class="app-container">
+    <!-- Header & Navigation -->
+    <header class="app-header">
+      <div class="brand" onclick="window.app.switchTab('tricks')">
+        <div class="brand-icon-wrapper">
+          <img src="images/icon.png" alt="Soromath Logo">
+        </div>
+        <div class="brand-text">
+          <h1>Soromath <span class="brand-badge">2.0</span></h1>
+          <p>Mental Math & Trick Mastery</p>
+        </div>
+      </div>
+
+      <nav class="app-nav">
+        <button class="nav-tab-btn active" data-tab="tricks">
+          <svg class="tab-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/></svg>
+          <span>Trick Dojo</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="drills">
+          <svg class="tab-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span>Speed Drills</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="anzan">
+          <svg class="tab-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          <span>Flash Anzan</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="daily">
+          <svg class="tab-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          <span>Daily Quest</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="stats">
+          <svg class="tab-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <span>Stats & Mastery</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="settings">
+          <svg class="tab-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>Settings</span>
+        </button>
+      </nav>
+
+      <div class="header-actions">
+        <div class="streak-pill" title="Daily Quest Streak">
+          <span>STREAK</span>
+          <span id="header-streak-count">0d</span>
+        </div>
+        <div class="streak-pill" title="Mastered Tricks" style="color: #6366f1;">
+          <span id="header-tricks-count">0 Mastered</span>
+        </div>
+        <button class="btn-icon" id="header-sound-btn" onclick="window.app.toggleSound()" title="Toggle Sound">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        </button>
+        <button class="btn-icon" id="header-theme-btn" onclick="window.app.cycleTheme()" title="Quick Cycle Theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20v-20z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main View Section Container -->
+    <main class="main-content">
+      
+      <!-- ==============================================
+           1. MENTAL MATH TRICKS DOJO
+           ============================================== -->
+      <section id="view-tricks" class="view-section active">
+        <div class="tricks-header">
+          <h2>Mental Math Tricks Dojo</h2>
+          <p>Real mathematical shortcuts for multiplication, addition, subtraction, and division. Explains the rule, provides examples, and lets you practice with instant verification.</p>
+        </div>
+
+        <div class="tricks-controls">
+          <div class="search-box-wrapper">
+            <span class="search-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </span>
+            <input type="text" id="trick-search" class="trick-search-input" placeholder="Search tricks (e.g., '11', 'square ending in 5', 'subtraction', 'halving')...">
+          </div>
+
+          <div class="trick-filters">
+            <button class="trick-filter-btn active" data-cat="all">All Tricks</button>
+            <button class="trick-filter-btn" data-cat="multiplication">Multiplication</button>
+            <button class="trick-filter-btn" data-cat="addition">Addition</button>
+            <button class="trick-filter-btn" data-cat="subtraction">Subtraction</button>
+            <button class="trick-filter-btn" data-cat="division">Division</button>
+            <button class="trick-filter-btn" data-cat="special">Powers & Percents</button>
+          </div>
+        </div>
+
+        <div id="tricks-grid" class="tricks-grid">
+          <!-- Populated by js/tricks-runner.js -->
+        </div>
+      </section>
+
+      <!-- ==============================================
+           2. SPEED DRILLS VIEW
+           ============================================== -->
+      <section id="view-drills" class="view-section">
+        <div class="drills-container">
+          <!-- Config Panel -->
+          <div class="drill-config-panel card">
+            <!-- Operations Scroller -->
+            <div class="operation-mode-scroller" id="drill-mode-buttons">
+              <button class="op-btn active" onclick="window.drillEngine.setMode('multiplication')">Multiplication</button>
+              <button class="op-btn" onclick="window.drillEngine.setMode('addition')">Addition</button>
+              <button class="op-btn" onclick="window.drillEngine.setMode('subtraction')">Subtraction</button>
+              <button class="op-btn" onclick="window.drillEngine.setMode('division')">Division</button>
+              <button class="op-btn" onclick="window.drillEngine.setMode('percentages')">Percentages</button>
+              <button class="op-btn" onclick="window.drillEngine.setMode('exponents')">Powers</button>
+              <button class="op-btn" onclick="window.drillEngine.setMode('roots')">Roots</button>
+              <button class="op-btn" onclick="window.drillEngine.setMode('fractions')">Fractions</button>
+              <button class="op-btn" onclick="window.drillEngine.setMode('linear')">Equations</button>
+              <button class="op-btn" onclick="window.drillEngine.setMode('day_of_week')">Weekday</button>
+              <button class="op-btn" onclick="window.drillEngine.setMode('binary_to_dec')">Binary</button>
+            </div>
+
+            <!-- Controls Row: Difficulty & Time Limits -->
+            <div class="config-row">
+              <div class="config-group" id="drill-diff-group">
+                <span class="config-label">Difficulty</span>
+                <button class="config-pill active" onclick="setDrillDiff('easy', this)">Easy</button>
+                <button class="config-pill" onclick="setDrillDiff('medium', this)">Medium</button>
+                <button class="config-pill" onclick="setDrillDiff('hard', this)">Hard</button>
+              </div>
+
+              <div class="config-group" id="drill-time-group">
+                <span class="config-label">Mode</span>
+                <button class="config-pill" onclick="setDrillTime(15, this)">15s</button>
+                <button class="config-pill" onclick="setDrillTime(30, this)">30s</button>
+                <button class="config-pill active" onclick="setDrillTime(60, this)">60s</button>
+                <button class="config-pill" onclick="setDrillProblems(10, this)">10 Probs</button>
+                <button class="config-pill" onclick="setDrillProblems(25, this)">25 Probs</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Arena Card -->
+          <div class="drill-arena-card">
+            <!-- Timer bar -->
+            <div class="drill-timer-container">
+              <div class="drill-timer-bar" id="drill-timer-bar"></div>
+            </div>
+            <div class="drill-timer-badge" id="drill-timer-text">60s</div>
+
+            <!-- Problem display -->
+            <div class="drill-problem-display" id="drill-problem-display">
+              Loading...
+            </div>
+
+            <!-- Input wrapper (Instant check on typing, no enter or answer button needed) -->
+            <div class="drill-input-wrapper">
+              <input 
+                type="text" 
+                id="drill-input" 
+                class="drill-input" 
+                placeholder="Type answer..." 
+                autocomplete="off" 
+                autocorrect="off" 
+                autocapitalize="off" 
+                spellcheck="false"
+                oninput="window.drillEngine.handleInput(this.value)"
+                onkeydown="if(event.key==='Enter') window.drillEngine.checkAnswer()"
+              />
+            </div>
+
+            <!-- Live correction text -->
+            <div class="drill-live-correction" id="drill-live-correction" style="display: none;"></div>
+
+            <!-- Live stats footer -->
+            <div class="drill-live-stats">
+              <div class="live-stat-item live-stat-correct">
+                Correct: <strong id="drill-stat-correct">0</strong>
+              </div>
+              <div class="live-stat-item live-stat-wrong">
+                Wrong: <strong id="drill-stat-wrong">0</strong>
+              </div>
+              <div class="live-stat-item">
+                Accuracy: <strong id="drill-stat-acc">100%</strong>
+              </div>
+            </div>
+
+            <div class="drill-restart-hint">
+              Type correct answer to advance automatically • Press <kbd>R</kbd> or <kbd>Esc</kbd> to restart
+            </div>
+
+            <!-- Finish screen overlay -->
+            <div class="drill-finish-screen" id="drill-finish-screen" style="display: none;">
+              <h2 class="finish-title">Test Complete</h2>
+              
+              <div class="finish-stats-grid">
+                <div class="finish-stat-card">
+                  <div class="finish-stat-val" id="finish-cpm">0 CPM</div>
+                  <div class="finish-stat-lbl">Speed</div>
+                </div>
+                <div class="finish-stat-card">
+                  <div class="finish-stat-val" id="finish-raw-cpm">0 raw</div>
+                  <div class="finish-stat-lbl">Raw CPM</div>
+                </div>
+                <div class="finish-stat-card">
+                  <div class="finish-stat-val" id="finish-accuracy">100%</div>
+                  <div class="finish-stat-lbl">Accuracy</div>
+                </div>
+                <div class="finish-stat-card">
+                  <div class="finish-stat-val text-success" id="finish-correct">0</div>
+                  <div class="finish-stat-lbl">Correct</div>
+                </div>
+                <div class="finish-stat-card">
+                  <div class="finish-stat-val text-danger" id="finish-wrong">0</div>
+                  <div class="finish-stat-lbl">Wrong</div>
+                </div>
+                <div class="finish-stat-card">
+                  <div class="finish-stat-val" style="color:#f59e0b;" id="finish-grade">A+</div>
+                  <div class="finish-stat-lbl">Rating</div>
+                </div>
+              </div>
+
+              <div class="finish-mistakes-container" id="finish-mistakes-list"></div>
+
+              <button class="btn btn-primary" onclick="window.drillEngine.resetTest()">
+                Start Next Test (R)
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           3. FLASH ANZAN & INTERACTIVE SOROBAN
+           ============================================== -->
+      <section id="view-anzan" class="view-section">
+        <div class="anzan-page-grid">
+          <!-- Flash Stage -->
+          <div class="anzan-stage-card">
+            <div class="anzan-display-text" id="anzan-display-text">Press Start</div>
+
+            <div class="anzan-controls-bar">
+              <button class="btn btn-primary" id="anzan-start-btn" onclick="window.flashAnzanEngine.start()">
+                Start Flash Anzan (Space)
+              </button>
+            </div>
+
+            <div class="anzan-input-area" id="anzan-input-area" style="display: none;">
+              <input 
+                type="text" 
+                id="anzan-answer-input" 
+                class="anzan-answer-input" 
+                placeholder="Type sum..."
+                oninput="window.flashAnzanEngine.onInput(this.value)"
+                onkeydown="if(event.key==='Enter') window.flashAnzanEngine.checkAnswer()"
+              />
+            </div>
+
+            <div class="anzan-feedback" id="anzan-feedback"></div>
+          </div>
+
+          <!-- Configuration Grid -->
+          <div class="anzan-settings-grid">
+            <div class="anzan-setting-item">
+              <label>Flash Speed</label>
+              <select class="anzan-select" id="anzan-speed-select" onchange="window.flashAnzanEngine.setSpeed(parseFloat(this.value))">
+                <option value="0.3">0.3s (Extremely Fast)</option>
+                <option value="0.5">0.5s (Fast)</option>
+                <option value="0.7" selected>0.7s (Standard)</option>
+                <option value="1.0">1.0s (Moderate)</option>
+                <option value="1.5">1.5s (Relaxed)</option>
+              </select>
+            </div>
+
+            <div class="anzan-setting-item">
+              <label>Number Amount</label>
+              <select class="anzan-select" id="anzan-amount-select" onchange="window.flashAnzanEngine.setAmount(parseInt(this.value, 10))">
+                <option value="3">3 Numbers</option>
+                <option value="5">5 Numbers</option>
+                <option value="7" selected>7 Numbers</option>
+                <option value="10">10 Numbers</option>
+                <option value="15">15 Numbers</option>
+              </select>
+            </div>
+
+            <div class="anzan-setting-item">
+              <label>Digits</label>
+              <select class="anzan-select" id="anzan-digits-select" onchange="window.flashAnzanEngine.setDigits(parseInt(this.value, 10))">
+                <option value="1" selected>1 Digit (1 - 9)</option>
+                <option value="2">2 Digits (10 - 99)</option>
+                <option value="3">3 Digits (100 - 999)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Interactive Soroban Abacus -->
+          <div class="soroban-section">
+            <div class="soroban-header">
+              <h3>Interactive Soroban (Japanese Abacus)</h3>
+              <p>Top deck: 1 Heaven bead = 5. Bottom deck: 4 Earth beads = 1 each. Click beads to calculate.</p>
+            </div>
+
+            <div id="soroban-container"></div>
+
+            <div style="display: flex; gap: 0.75rem;">
+              <button class="btn btn-secondary" onclick="window.sorobanAbacus.reset()">Clear Beads</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           4. DAILY QUEST
+           ============================================== -->
+      <section id="view-daily" class="view-section">
+        <div class="daily-quest-container">
+          <div class="tricks-header">
+            <h2>Daily Mental Math Quest</h2>
+            <p>10 unique daily problems. Auto-evaluates as you type.</p>
+          </div>
+
+          <div class="daily-quest-card card" id="daily-quest-card">
+            <div class="config-label" id="daily-progress-text">Question 1 of 10</div>
+            <div class="daily-problem-text" id="daily-problem-text">Press Start Below</div>
+
+            <div class="daily-input-row" id="daily-input-row">
+              <input 
+                type="text" 
+                id="daily-input" 
+                class="drill-input" 
+                placeholder="Type answer..." 
+                oninput="window.dailyQuestManager.onInput(this.value)"
+                onkeydown="if(event.key==='Enter') window.dailyQuestManager.onEnter()"
+              />
+            </div>
+
+            <div id="daily-feedback" style="min-height: 1.5rem; font-weight: 700;"></div>
+            <div id="daily-result-box" style="display: none;"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           5. STATS & MASTERY VIEW
+           ============================================== -->
+      <section id="view-stats" class="view-section">
+        <div class="stats-container">
+          <!-- KPI Cards -->
+          <div class="stats-kpi-grid">
+            <div class="kpi-card card">
+              <div class="kpi-icon-wrapper">CPM</div>
+              <div class="kpi-details">
+                <span class="kpi-value" id="stats-pb-cpm">0 CPM</span>
+                <span class="kpi-label">Personal Best</span>
+              </div>
+            </div>
+
+            <div class="kpi-card card">
+              <div class="kpi-icon-wrapper">ACC</div>
+              <div class="kpi-details">
+                <span class="kpi-value" id="stats-overall-acc">100%</span>
+                <span class="kpi-label">Overall Accuracy</span>
+              </div>
+            </div>
+
+            <div class="kpi-card card">
+              <div class="kpi-icon-wrapper">NUM</div>
+              <div class="kpi-details">
+                <span class="kpi-value" id="stats-total-solved">0</span>
+                <span class="kpi-label">Problems Solved</span>
+              </div>
+            </div>
+
+            <div class="kpi-card card">
+              <div class="kpi-icon-wrapper">TOT</div>
+              <div class="kpi-details">
+                <span class="kpi-value" id="stats-total-tests">0</span>
+                <span class="kpi-label">Tests Completed</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CPM History Chart -->
+          <div class="chart-card card">
+            <div class="chart-header">
+              <h3>Correct Per Minute (CPM) Progress</h3>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="stats-cpm-chart"></canvas>
+            </div>
+          </div>
+
+          <!-- Achievements Section -->
+          <div class="achievements-section">
+            <h3>Achievements & Milestones</h3>
+            <div class="achievements-grid" id="stats-achievements-grid"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           6. SETTINGS & CUSTOM THEME BUILDER
+           ============================================== -->
+      <section id="view-settings" class="view-section">
+        <div class="stats-container" style="max-width: 780px;">
+          <div class="card" style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <h3>General Preferences</h3>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong>Show Live Corrections</strong>
+                <p style="font-size: 0.82rem; color: var(--text-secondary);">Displays the correct answer if you submit an error during speed drills.</p>
+              </div>
+              <input type="checkbox" id="settings-live-corr" checked style="width: 20px; height: 20px;">
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong>Voice Mode (Spoken Math)</strong>
+                <p style="font-size: 0.82rem; color: var(--text-secondary);">Reads out problems using speech synthesis.</p>
+              </div>
+              <input type="checkbox" id="settings-voice-mode" style="width: 20px; height: 20px;">
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong>Sound Volume</strong>
+                <p style="font-size: 0.82rem; color: var(--text-secondary);">Adjust audio effects loudness.</p>
+              </div>
+              <input type="range" id="settings-vol-slider" min="0" max="100" value="35" style="max-width: 160px;">
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong>Theme Preset</strong>
+                <p style="font-size: 0.82rem; color: var(--text-secondary);">Choose your visual theme.</p>
+              </div>
+              <select id="settings-theme-select" class="anzan-select" style="min-width: 180px;">
+                <option value="obsidian">Obsidian Dark</option>
+                <option value="matrix">Matrix Terminal</option>
+                <option value="sakura">Sakura Blossom</option>
+                <option value="ocean">Deep Ocean</option>
+                <option value="cyberpunk">Cyberpunk Neon</option>
+                <option value="fire">Solar Flare</option>
+                <option value="amethyst">Amethyst Night</option>
+                <option value="nordic">Nordic Clean</option>
+                <option value="custom">Custom Preset</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Custom Theme Studio -->
+          <div class="card" style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <h3>Custom Theme Studio</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">Customize your color palette.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
+              <div>
+                <label style="font-size: 0.8rem; font-weight: bold;">Background</label>
+                <input type="color" id="custom-color-bg" value="#0d1117" style="width: 100%; height: 38px; border-radius: 6px; border: 1px solid var(--card-border); background: transparent; cursor: pointer;">
+              </div>
+              <div>
+                <label style="font-size: 0.8rem; font-weight: bold;">Card Background</label>
+                <input type="color" id="custom-color-card" value="#161b22" style="width: 100%; height: 38px; border-radius: 6px; border: 1px solid var(--card-border); background: transparent; cursor: pointer;">
+              </div>
+              <div>
+                <label style="font-size: 0.8rem; font-weight: bold;">Border Color</label>
+                <input type="color" id="custom-color-border" value="#30363d" style="width: 100%; height: 38px; border-radius: 6px; border: 1px solid var(--card-border); background: transparent; cursor: pointer;">
+              </div>
+              <div>
+                <label style="font-size: 0.8rem; font-weight: bold;">Accent Color</label>
+                <input type="color" id="custom-color-accent" value="#6366f1" style="width: 100%; height: 38px; border-radius: 6px; border: 1px solid var(--card-border); background: transparent; cursor: pointer;">
+              </div>
+              <div>
+                <label style="font-size: 0.8rem; font-weight: bold;">Text Color</label>
+                <input type="color" id="custom-color-text" value="#f0f6fc" style="width: 100%; height: 38px; border-radius: 6px; border: 1px solid var(--card-border); background: transparent; cursor: pointer;">
+              </div>
+              <div>
+                <label style="font-size: 0.8rem; font-weight: bold;">Font Family</label>
+                <select id="custom-font-select" class="anzan-select" style="width: 100%; height: 38px;">
+                  <option value="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Modern Sans-Serif</option>
+                  <option value="ui-monospace, SFMono-Regular, Menlo, monospace">Monospace / Code</option>
+                  <option value="Georgia, serif">Classic Serif</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="btn btn-primary" id="apply-custom-theme-btn" style="align-self: flex-start;">
+              Apply & Save Custom Theme
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Global Trick Detail & Interactive Practice Modal -->
+    <div class="modal-overlay" id="trick-modal">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h3 class="modal-title" id="trick-modal-title">Trick Explainer</h3>
+          <button class="modal-close" onclick="window.trickDojo.closeModal()" title="Close">&times;</button>
+        </div>
+        <div class="modal-body" id="trick-modal-body">
+          <!-- Populated by js/tricks-runner.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container"></div>
+  </div>
+
+  <!-- Client JavaScript Modules -->
+  <script src="js/audio.js"></script>
+  <script src="js/speech.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/tricks-data.js"></script>
+  <script src="js/tricks-runner.js"></script>
+  <script src="js/drills.js"></script>
+  <script src="js/soroban.js"></script>
+  <script src="js/anzan.js"></script>
+  <script src="js/daily.js"></script>
+  <script src="js/stats.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Helper UI switch functions -->
+  <script>
+    function setDrillDiff(diff, btn) {
+      document.querySelectorAll('#drill-diff-group .config-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      window.drillEngine.setDifficulty(diff);
+    }
+
+    function setDrillTime(sec, btn) {
+      document.querySelectorAll('#drill-time-group .config-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      window.drillEngine.setTimeLimit(sec);
+    }
+
+    function setDrillProblems(count, btn) {
+      document.querySelectorAll('#drill-time-group .config-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      window.drillEngine.setProblemLimit(count);
+    }
+
+    document.querySelectorAll('#drill-mode-buttons .op-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#drill-mode-buttons .op-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

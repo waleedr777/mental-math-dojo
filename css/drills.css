@@ -1,0 +1,333 @@
+/* Speed Drills Styles */
+.drills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Drills Top Config Bar */
+.drill-config-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.config-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.config-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.config-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-right: 0.25rem;
+}
+
+.config-pill {
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.config-pill:hover {
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+}
+
+.config-pill.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px var(--accent-glow);
+}
+
+/* Operation Mode Select Scroller */
+.operation-mode-scroller {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.4rem;
+}
+
+.op-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.op-btn:hover {
+  background: var(--card-hover);
+  color: var(--text-primary);
+}
+
+.op-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px var(--accent-glow);
+}
+
+/* Drill Arena Card */
+.drill-arena-card {
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: var(--shadow-md);
+  min-height: 380px;
+  justify-content: center;
+}
+
+/* Timer Bar */
+.drill-timer-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--bg-tertiary);
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.drill-timer-bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--info));
+  transition: width 0.1s linear;
+}
+
+.drill-timer-badge {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+/* Problem Display */
+.drill-problem-display {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  user-select: none;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Main Input */
+.drill-input-wrapper {
+  position: relative;
+  max-width: 320px;
+  width: 100%;
+}
+
+.drill-input {
+  width: 100%;
+  padding: 0.95rem 1.25rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  background: var(--bg-primary);
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  outline: none;
+  transition: var(--transition);
+  font-family: var(--font-mono);
+}
+
+.drill-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.drill-input.flash-correct {
+  border-color: var(--success);
+  box-shadow: 0 0 25px var(--success-glow);
+}
+
+.drill-input.shake {
+  animation: shakeX 0.3s ease;
+  border-color: var(--danger);
+  box-shadow: 0 0 20px var(--danger-glow);
+}
+
+@keyframes shakeX {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+/* Live Correction Text */
+.drill-live-correction {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--danger);
+  text-align: center;
+  min-height: 1.5rem;
+}
+
+/* Bottom Stats Bar */
+.drill-live-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.live-stat-item strong {
+  color: var(--text-primary);
+}
+
+.live-stat-correct strong {
+  color: var(--success);
+}
+
+.live-stat-wrong strong {
+  color: var(--danger);
+}
+
+/* Restart Hint */
+.drill-restart-hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Finish Screen Modal / Overlay */
+.drill-finish-screen {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 10;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.finish-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.finish-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 520px;
+  margin-bottom: 2rem;
+}
+
+.finish-stat-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  text-align: center;
+}
+
+.finish-stat-val {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.finish-stat-lbl {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.finish-mistakes-container {
+  width: 100%;
+  max-width: 520px;
+  max-height: 160px;
+  overflow-y: auto;
+  background: var(--bg-primary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+}
+
+.finish-mistakes-container h4 {
+  font-size: 0.88rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.finish-mistakes-container ul {
+  padding-left: 1.2rem;
+  color: var(--text-secondary);
+}
+
+.finish-mistakes-container li {
+  margin-bottom: 0.35rem;
+}
+
+@media (max-width: 640px) {
+  .drill-problem-display {
+    font-size: 2.8rem;
+  }
+  .finish-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

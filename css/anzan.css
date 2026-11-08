@@ -1,0 +1,306 @@
+/* Flash Anzan & Soroban Abacus Styles */
+.anzan-page-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+/* Flash Anzan Stage */
+.anzan-stage-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 340px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 1.5rem;
+  position: relative;
+  box-shadow: var(--shadow-md);
+}
+
+.anzan-display-text {
+  font-size: 5.5rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  font-family: var(--font-mono);
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.anzan-controls-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.anzan-input-area {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 360px;
+}
+
+.anzan-answer-input {
+  flex: 1;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  border: 2px solid var(--card-border);
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+}
+
+.anzan-answer-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.anzan-feedback {
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  min-height: 1.5rem;
+  text-align: center;
+}
+
+/* Config Grid */
+.anzan-settings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.anzan-setting-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.anzan-setting-item label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.anzan-select {
+  padding: 0.45rem 0.65rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-primary);
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  font-size: 0.88rem;
+  outline: none;
+}
+
+/* =========================================
+   SOROBAN ABACUS COMPONENT
+   ========================================= */
+.soroban-section {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.soroban-header {
+  text-align: center;
+}
+
+.soroban-header h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.soroban-header p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.soroban-frame {
+  position: relative;
+  background: linear-gradient(180deg, #1f2937, #111827);
+  border: 8px solid #374151;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  display: inline-block;
+}
+
+.soroban-reckoning-beam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 75px;
+  height: 12px;
+  background: #4b5563;
+  border-top: 1px solid #6b7280;
+  border-bottom: 2px solid #111827;
+  z-index: 2;
+}
+
+.soroban-rods-container {
+  display: flex;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 3;
+}
+
+.soroban-rod {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 48px;
+}
+
+.soroban-rod-line {
+  position: absolute;
+  top: 0;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  background: #9ca3af;
+  border-radius: 2px;
+  z-index: 1;
+}
+
+/* Decks */
+.soroban-deck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.soroban-upper-deck {
+  height: 60px;
+  justify-content: flex-start;
+}
+
+.soroban-beam-node {
+  height: 12px;
+  position: relative;
+  width: 100%;
+  z-index: 4;
+}
+
+.soroban-beam-node.unit-dot::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 4px #fff;
+}
+
+.soroban-lower-deck {
+  height: 160px;
+  justify-content: flex-end;
+  gap: 2px;
+}
+
+/* Beads */
+.soroban-bead {
+  width: 44px;
+  height: 22px;
+  background: linear-gradient(135deg, #d97706, #b45309);
+  border-radius: 50% / 100%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  user-select: none;
+}
+
+.soroban-bead:hover {
+  filter: brightness(1.15);
+}
+
+/* Active Upper Bead pushes DOWN towards the beam */
+.upper-bead {
+  transform: translateY(0);
+}
+.upper-bead.bead-active {
+  transform: translateY(34px);
+}
+
+/* Active Lower Beads push UP towards the beam */
+.lower-bead {
+  transform: translateY(0);
+}
+.lower-bead.bead-active {
+  transform: translateY(-56px);
+}
+
+/* Rod Digit readout */
+.soroban-digit {
+  margin-top: 0.6rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--accent);
+  font-family: var(--font-mono);
+}
+
+.soroban-value-readout {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.soroban-value-readout strong {
+  color: var(--accent);
+  font-size: 1.4rem;
+}
+
+@media (max-width: 600px) {
+  .anzan-display-text {
+    font-size: 3.5rem;
+  }
+  .soroban-rods-container {
+    gap: 0.6rem;
+  }
+  .soroban-rod {
+    width: 36px;
+  }
+  .soroban-bead {
+    width: 34px;
+    height: 18px;
+  }
+}
